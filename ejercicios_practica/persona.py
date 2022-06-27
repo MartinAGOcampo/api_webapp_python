@@ -9,9 +9,9 @@ Descripcion:
 Programa creado para administrar la base de datos de registro de personas
 '''
 
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from numpy import append
 db = SQLAlchemy()
 
 class Persona(db.Model):
@@ -53,6 +53,29 @@ def report(limit=0, offset=0):
 
     return json_result_list
 
+def dashboard():
+    # Obtener los últimos 250 registros del paciente
+    # ordenado por fecha, obteniedo los últimos 250 registros
+    query = db.session.query(Persona).order_by(Persona.name.desc())
+    #query = query.limit(250)
+    query_results = query.all()
+
+    if query_results is None or len(query_results) == 0:
+        # No data register
+        # Bug a proposito dejado para poner a prueba el traceback
+        # ya que el sistema espera una tupla
+        return []
+
+    x = []
+    y = []
+
+    # De los resultados obtenidos tomamos el tiempo y las puslaciones pero
+    # en el orden inverso, para tener del más viejo a la más nuevo registro
+    for resultados in query_results:
+        x.append(resultados.name)
+        y.append(resultados.age)
+
+    return x, y
 
 if __name__ == "__main__":
     print("Test del modulo heart.py")
