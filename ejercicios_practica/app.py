@@ -68,14 +68,6 @@ def personas():
         # Alumno: Pasarle al metodo report los valores de limit y offset
         data = persona.report(limit=limit, offset=offset)
         
-        #result = '''<h3>Alumno: Implementar la llamada
-        #            al HTML tabla.html
-        #            con render_template, recuerde pasar
-        #            data como parámetro</h3>'''
-        # Sacar esta linea cuando haya implementado el return
-        # con render template
-        #return result
-
         return render_template('tabla.html', data=data)
     except:
         return jsonify({'trace': traceback.format_exc()})
@@ -149,15 +141,14 @@ def comparativa():
 
 # Este método se ejecutará solo una vez
 # la primera vez que ingresemos a un endpoint
-@app.before_first_request
-def before_first_request_func():
-    # Crear aquí todas las bases de datos
-    persona.db.create_all()
-    print("Base de datos generada")
-
 
 if __name__ == '__main__':
     print('Inove@Server start!')
+
+    # Crear la base de datos antes de iniciar el servidor
+    with app.app_context():
+        persona.db.create_all()
+        print("Base de datos generada")
 
     # Lanzar server
     app.run(host="127.0.0.1", port=5000)

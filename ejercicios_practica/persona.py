@@ -58,7 +58,7 @@ def dashboard():
     # ordenado por fecha, obteniedo los últimos 250 registros
     query = db.session.query(Persona).order_by(Persona.name.desc())
     #query = query.limit(250)
-    query_results = query.all()
+    query_results = query.limit(250).all()
 
     if query_results is None or len(query_results) == 0:
         # No data register

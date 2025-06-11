@@ -1,23 +1,30 @@
 <!doctype html>
 <html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='media/styles.css') }}">
+</head>
 <body>
     <h1>Bienvenido!!</h1>
-    <h2>Endpoints disponibles:</h2>
-    <h2>Ejercicio Nº1:</h2>
-    <h3>[GET] /personas?limit=[]&offset=[] --> renderizar con table.html el listado de personas</h3>
-    <h2>Ejercicio Nº2:</h2>
-    <h3>[POST] /registro --> complete el registro de personas por JSON</h3>
-    <h2>Ejercicio Nº3:</h2>
-    <h3>[GET] /comparativa --> mostrar un gráfico con las edades de todas las personas
+    <h2 id="h2index">Endpoints disponibles:</h2><br>
+    <h2 id="h2index">Ejercicio Nº1:</h2>
+    <h3>[GET] /personas?limit=[]&offset=[] --> renderizar con table.html el listado de personas</h3><br>
+    <h2 id="h2index">Ejercicio Nº2:</h2>
+    <h3>[POST] /registro --> complete el registro de personas por JSON</h3><br>
+    <h2 id="h2index">Ejercicio Nº3:</h2>
+    <h3>[GET] /comparativa --> mostrar un gráfico con las edades de todas las personas </h3><br>
 
     <p></p>
 
     <!-- Codigo utilizado para redireccionar a otra pagina-->
-    <form action="{{url_for('personas')}}">
+    <form id="form1" action="{{url_for('personas')}}">
         <input type="submit" value="Personas"/>
-    </form>
+    </form><br><br>
 
-    <form action="{{url_for('registro')}}">
+    <form id="form1" action="{{url_for('comparativa')}}">
+        <input type="submit" value="Comparativa"/>
+    </form><br><br>
+
+    <form id="form2" action="{{url_for('registro')}}">
         <input type="submit" value="Registro"/>
     </form>
 

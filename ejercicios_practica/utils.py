@@ -28,7 +28,10 @@ def graficar(x, y):
     '''
     fig, ax = plt.subplots(figsize=(16, 9))
     ax.plot(x, y)
-    ax.get_xaxis().set_visible(False)
+    ax.set_title('Edades de Personas Registradas', fontsize=16)
+    ax.set_ylabel('Edad', fontsize=12)
+    ax.set_xlabel('Personas', fontsize=12)
+    ax.grid(True, linestyle='--')
 
     # Convertir ese grafico en una imagen para enviar por HTTP
     # y mostrar en el HTML

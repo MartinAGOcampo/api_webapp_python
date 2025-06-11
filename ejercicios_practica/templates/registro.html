@@ -4,6 +4,7 @@
 <!-- Titulo de la página-->
 <head>
     <title>Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='media/styles.css') }}">
 </head>
 
 <body>
@@ -16,7 +17,8 @@
 
 <form method = "POST" action="{{url_for('registro')}}">
   <label>Nombre y apellido:</label><br>
-  <input type="name" name="name"><br>
+  
+  <input type="name" name="name"><br><br>
   <label>Edad:</label><br>
   <input type="number" name="age"><br><br>
   <input type="submit" value="Enviar">
@@ -24,12 +26,13 @@
 
 <p></p>
 
-<form action="{{url_for('index')}}">
-  <input type="submit" value="Home"/>
-</form>
 
 <form action="{{url_for('personas')}}">
   <input type="submit" value="Personas"/>
+</form><br><br>
+
+<form action="{{url_for('index')}}">
+  <input type="submit" value="Home"/>
 </form>
 
 </body>
